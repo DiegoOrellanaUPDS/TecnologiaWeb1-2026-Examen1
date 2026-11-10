@@ -14,21 +14,6 @@ public class VentasController : ControllerBase
         _context = context;
     }
 
-[HttpDelete("deleteVentaLeonardoJulio/{id}")]
-    public async Task<IActionResult> deleteVentaLeonardoJulio(int? id)
-    {
-        var venta = await _context.Venta.FindAsync(id);
-        if (venta == null)
-        {
-            return NotFound();
-        }
-
-        _context.Venta.Remove(venta);
-        await _context.SaveChangesAsync();
-
-        return NoContent();
-    }
-
     [HttpPost("postVentaLeonardoJulio")]
     public async Task<ActionResult<Venta>> postVentaLeonardoJulio(Venta venta)
     {
