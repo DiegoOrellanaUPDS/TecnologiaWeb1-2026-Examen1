@@ -78,11 +78,8 @@ public class ProductosController : ControllerBase
         return NoContent();
     }
 
-<<<<<<< HEAD
     // POST: api/Producto/GersonCari
-=======
     // POST: api/Producto
->>>>>>> f2-gerson-cari-get
     [HttpPost]
     public async Task<ActionResult<Producto>> postProductoGersonCari(Producto producto)
     {
