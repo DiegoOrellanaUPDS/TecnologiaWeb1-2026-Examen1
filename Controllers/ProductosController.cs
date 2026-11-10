@@ -78,7 +78,11 @@ public class ProductosController : ControllerBase
         return NoContent();
     }
 
+<<<<<<< HEAD
+    // POST: api/Producto/GersonCari
+=======
     // POST: api/Producto
+>>>>>>> f2-gerson-cari-get
     [HttpPost]
     public async Task<ActionResult<Producto>> postProductoGersonCari(Producto producto)
     {
@@ -88,14 +92,19 @@ public class ProductosController : ControllerBase
         return CreatedAtAction("GetProducto", new { id = producto.Id }, producto);
     }
 
-    // DELETE específico con identificador propio
-    [HttpDelete("gerson/{id}")]
-    public async Task<IActionResult> deleteProductoGersonCari(int id)
+    // DELETE: api/Producto/5
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteProducto(int? id)
     {
         var producto = await _context.Producto.FindAsync(id);
-        if (producto == null) return NotFound();
+        if (producto == null)
+        {
+            return NotFound();
+        }
+
         _context.Producto.Remove(producto);
         await _context.SaveChangesAsync();
+
         return NoContent();
     }
 
