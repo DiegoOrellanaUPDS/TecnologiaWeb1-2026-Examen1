@@ -67,15 +67,16 @@ public class ProductosController : ControllerBase
 
     // POST: api/Producto
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-    [HttpPost]
-    public async Task<ActionResult<Producto>> PostProducto(Producto producto)
+    [HttpPost("postProductoMisaelChoque")]
+    public async Task<ActionResult<Producto>> PostProductoMisaelChoque(Producto producto)
     {
-        _context.Producto.Add(producto);
-        await _context.SaveChangesAsync();
+      _context.Producto.Add(producto);
+    await _context.SaveChangesAsync();
 
-        return CreatedAtAction("GetProducto", new { id = producto.Id }, producto);
+    return CreatedAtAction("GetProducto", new { id = producto.Id }, producto);
     }
-
+    
+    
     // DELETE: api/Producto/5
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteProducto(int? id)
