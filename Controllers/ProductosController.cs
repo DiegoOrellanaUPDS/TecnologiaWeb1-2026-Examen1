@@ -6,6 +6,8 @@ using Examen_1.Dominio;
 // Comentario exaamen
 [Route("api/[controller]")]
 [ApiController]
+
+// Comentario practico.
 public class ProductosController : ControllerBase
 {
 
@@ -17,6 +19,14 @@ public class ProductosController : ControllerBase
     public ProductosController(Examen_1Context context)
     {
         _context = context;
+    }
+
+    [HttpGet("getProductoCarlosMiranda")]
+    public async Task<IActionResult> getProductoCarlosMiranda()
+    {
+        var productos = await _context.Producto.ToListAsync();
+
+        return Ok(productos);
     }
 
     // GET: api/Producto
@@ -91,8 +101,17 @@ public class ProductosController : ControllerBase
         return NoContent();
     }
 
+    [HttpPost("postProductoCarlosMiranda")]
+    public async Task<IActionResult> postProductoCarlosMiranda(Producto producto)
+    {
+        _context.Producto.Add(producto);
+        await _context.SaveChangesAsync();
 
-    // POST: api/Producto/GersonCari
+        return Ok(producto);
+    }
+
+    // POST: api/Producto
+    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
 
     [HttpPost]
     public async Task<ActionResult<Producto>> postProductoGersonCari(Producto producto)
