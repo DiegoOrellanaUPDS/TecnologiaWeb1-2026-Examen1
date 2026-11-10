@@ -105,19 +105,5 @@ public class VentasController : ControllerBase
 
         return CreatedAtAction(nameof(GetVenta), new { id = venta.Id }, venta);
     }
-    [HttpDelete("deleteVentaCarlosViza/{id}")]
-        public async Task<IActionResult> DeleteVentaCarlosViza(int id)
-        {
-            var venta = await _context.Venta.FindAsync(id);
-            if (venta == null)
-            {
-                return NotFound($"No se encontró la venta con ID {id}.");
-            }
-
-            _context.Venta.Remove(venta);
-            await _context.SaveChangesAsync();
-
-            return Ok(new { mensaje = $"Venta con ID {id} eliminada correctamente." });
-        }
 
 }
