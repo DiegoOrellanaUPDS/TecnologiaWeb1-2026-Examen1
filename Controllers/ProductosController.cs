@@ -8,6 +8,11 @@ using Examen_1.Dominio;
 [ApiController]
 public class ProductosController : ControllerBase
 {
+
+    //linea conflicto post
+
+    //mesaje cinflicto de get
+
     private readonly Examen_1Context _context;
     public ProductosController(Examen_1Context context)
     {
@@ -17,6 +22,13 @@ public class ProductosController : ControllerBase
     // GET: api/Producto
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Producto>>> GetProducto()
+    {
+        return await _context.Producto.ToListAsync();
+    }
+    
+    // productos/max
+    [HttpGet("Max")]
+    public async Task<ActionResult<IEnumerable<Producto>>> GetProductoMaxCaceres()
     {
         return await _context.Producto.ToListAsync();
     }
@@ -84,6 +96,17 @@ public class ProductosController : ControllerBase
 
     [HttpPost]
     public async Task<ActionResult<Producto>> postProductoGersonCari(Producto producto)
+    {
+        _context.Producto.Add(producto);
+        await _context.SaveChangesAsync();
+
+        return CreatedAtAction("GetProducto", new { id = producto.Id }, producto);
+    }
+
+    // api/Producto/Max
+    //maxCaceres
+    [HttpPost("Max")]
+     public async Task<ActionResult<Producto>> PostProductoMaxCaceres(Producto producto)
     {
         _context.Producto.Add(producto);
         await _context.SaveChangesAsync();
