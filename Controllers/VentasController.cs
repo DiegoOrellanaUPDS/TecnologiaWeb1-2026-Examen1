@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;S
+using Microsoft.EntityFrameworkCore;
 using Examen_1.Dominio;
 
 // 6767
@@ -135,6 +135,5 @@ public class VentasController : ControllerBase
     {
         return await _context.Venta.ToListAsync();
     }
-}
-}
+    
 }
