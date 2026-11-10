@@ -113,27 +113,6 @@ public class VentasController : ControllerBase
 
         return NoContent();
     }
-    // DELETE personalizado de Yasmin Diaz
-     [HttpDelete("deleteVentaYasminDiaz/{id:int}")]
-    public async Task<IActionResult> deleteVentaYasminDiaz(int id)
-    {
-    var venta = await _context.Venta.FindAsync(id);
-
-    if (venta == null)
-    {
-        return NotFound("Venta no encontrada.");
-    }
-
-    if (venta.CodigoVendedor != "YasminDiaz")
-    {
-        return BadRequest("Solo se pueden eliminar ventas propias.");
-    }
-
-    _context.Venta.Remove(venta);
-    await _context.SaveChangesAsync();
-
-    return NoContent();
-    }
 
     private bool VentaExists(int? id)
     {
