@@ -3,7 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using Examen_1.Dominio;
 
 
-// Controlador de ventas de Marco
+
+// Controlador de ventas - implementacion GET Marco Arias
 
 [Route("api/[controller]")]
 [ApiController]
@@ -21,6 +22,12 @@ public class VentasController : ControllerBase
     {
         return await _context.Venta.ToListAsync();
     }
+
+    [HttpGet("getVentaMarcoArias")]
+    public async Task<ActionResult<IEnumerable<Venta>>> getVentaMarcoArias()
+   {
+    return await _context.Venta.ToListAsync();
+   }
 
     // GET: api/Venta/5
     [HttpGet("{id}")]
