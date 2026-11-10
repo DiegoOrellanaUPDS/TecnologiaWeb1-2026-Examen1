@@ -136,4 +136,30 @@ public class VentasController : ControllerBase
         return await _context.Venta.ToListAsync();
     }
     
+    //Controlador Post
+    [HttpPost("Post/Venta/YeymiRivera")]
+    public async Task<IActionResult> PostVentaYeymi(string codigoventa, string codigocliente, string codigovendedor)
+    {
+        var venta =await (from v in _context.Venta where v.CodigoVenta==codigoventa&&v.CodigoVendedor==codigovendedor&&v.CodigoCliente==codigocliente&&v.Estado=="Pendiente"
+        select v).FirstOrDefaultAsync();
+        if(venta != null)
+        {
+            return NotFound("Esta venta ya existe y aun no se completo");
+        }
+        Venta venta1=new Venta();
+        venta1.CodigoCliente=codigocliente;
+        venta1.CodigoVendedor=codigovendedor;
+        venta1.CodigoVenta=codigoventa;
+        venta1.Estado="Pendiente";
+        _context.Add(venta1);
+        await _context.SaveChangesAsync();
+        return CreatedAtAction("GetVenta", new { id = venta.Id }, venta);
+    }
+    //Controlador Get
+    [HttpGet("GetVentaYEYMIRIVERA")]
+    public async Task<IActionResult> GetVentaYeymi()
+    {
+    var ventas = await _context.Venta.ToListAsync();
+            return Ok(ventas);
+    }
 }
