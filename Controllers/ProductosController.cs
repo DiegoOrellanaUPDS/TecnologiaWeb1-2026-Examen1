@@ -95,5 +95,14 @@ public class ProductosController : ControllerBase
     {
         return _context.Producto.Any(e => e.Id == id);
     }
+    [HttpPost("postProductoOvidioSulca")]
+    public async Task<IActionResult> postProductoOvidioSulca(
+        [FromBody] Producto producto)
+    {
+        _context.Set<Producto>().Add(producto);
+        await _context.SaveChangesAsync();
+
+        return Ok(producto);
+    }
 }
-// Ovidio Sulca - Comentario
+// Ovidio Sulca - Implementacion POST
