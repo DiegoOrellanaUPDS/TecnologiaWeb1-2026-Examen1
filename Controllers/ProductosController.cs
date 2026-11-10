@@ -6,7 +6,11 @@ using Examen_1.Dominio;
 [ApiController]
 public class ProductosController : ControllerBase
 {
+
     //linea conflicto post
+
+    //mesaje cinflicto de get
+
     private readonly Examen_1Context _context;
     public ProductosController(Examen_1Context context)
     {
@@ -16,6 +20,13 @@ public class ProductosController : ControllerBase
     // GET: api/Producto
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Producto>>> GetProducto()
+    {
+        return await _context.Producto.ToListAsync();
+    }
+    
+    // productos/max
+    [HttpGet("Max")]
+    public async Task<ActionResult<IEnumerable<Producto>>> GetProductoMaxCaceres()
     {
         return await _context.Producto.ToListAsync();
     }
