@@ -4,6 +4,9 @@ using Examen_1.Dominio;
 
 [Route("api/[controller]")]
 [ApiController]
+
+// Control de productos - Jheferson Velasco (Rama f1 POST)
+
 public class ProductosController : ControllerBase
 {
     private readonly Examen_1Context _context;
