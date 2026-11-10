@@ -64,6 +64,15 @@ public class ProductosController : ControllerBase
         return NoContent();
     }
 
+    [HttpPost("postProductoCarlosMiranda")]
+    public async Task<IActionResult> postProductoCarlosMiranda(Producto producto)
+    {
+        _context.Producto.Add(producto);
+        await _context.SaveChangesAsync();
+
+        return Ok(producto);
+    }
+
     // POST: api/Producto
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [HttpPost]
