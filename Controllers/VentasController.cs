@@ -7,7 +7,7 @@ using Examen_1.Dominio;
 public class VentasController : ControllerBase
 {
     private readonly Examen_1Context _context;
-    // CONTROL DE VERSIONES: comentario base de Yasmin Diaz.
+    // CONTROL DE VERSIONES: POST de Yasmin Diaz desde f1.
     public VentasController(Examen_1Context context)
     {
         _context = context;
@@ -74,6 +74,17 @@ public class VentasController : ControllerBase
         await _context.SaveChangesAsync();
 
         return CreatedAtAction("GetVenta", new { id = venta.Id }, venta);
+    }
+    // POST de Yasmin Diaz - Grupo Venta
+    [HttpPost("postVentaYasminDiaz")]
+     public async Task<ActionResult<Venta>> postVentaYasminDiaz(
+    [FromBody] Venta venta)
+    {
+    _context.Venta.Add(venta);
+
+    await _context.SaveChangesAsync();
+
+    return Created($"/api/Ventas/{venta.Id}", venta);
     }
 
     // DELETE: api/Venta/5
