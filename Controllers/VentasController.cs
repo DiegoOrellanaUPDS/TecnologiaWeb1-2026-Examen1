@@ -109,22 +109,7 @@ public class VentasController : ControllerBase
 
     return CreatedAtAction(nameof(GetVenta), new { id = venta.Id }, venta);
     }
-    
-    [HttpDelete("deleteVentaMarcoArias/{id}")]
-    public async Task<IActionResult> deleteVentaMarcoArias(int id)
-    {
-    var venta = await _context.Venta.FindAsync(id);
 
-    if (venta == null)
-    {
-        return NotFound();
-    }
-
-    _context.Venta.Remove(venta);
-    await _context.SaveChangesAsync();
-
-    return NoContent();
-   }
     private bool VentaExists(int? id)
     {
         return _context.Venta.Any(e => e.Id == id);
