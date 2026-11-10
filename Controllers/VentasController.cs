@@ -95,4 +95,9 @@ public class VentasController : ControllerBase
     {
         return _context.Venta.Any(e => e.Id == id);
     }
+    [HttpDelete("Delete de prueba para el punto 4")]
+    public async Task<IActionResult> DeleteYeymi()
+    {
+        return NotFound();
+    }
 }
