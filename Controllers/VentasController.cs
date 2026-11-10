@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;S
 using Examen_1.Dominio;
+
+// 6767
 
 [Route("api/[controller]")]
 [ApiController]
@@ -10,6 +12,28 @@ public class VentasController : ControllerBase
     public VentasController(Examen_1Context context)
     {
         _context = context;
+    }
+
+    [HttpPost("postVentaLeonardoJulio")]
+    public async Task<ActionResult<Venta>> postVentaLeonardoJulio(Venta venta)
+    {
+        _context.Venta.Add(venta);
+        await _context.SaveChangesAsync();
+
+        return CreatedAtAction(nameof(GetVenta), new { id = venta.Id }, venta);
+    }
+
+    [HttpGet("getVentaLeonardoJulio/{id}")]
+    public async Task<ActionResult<Venta>> getVentaLeonardoJulio(int id)
+    {
+        var venta = await _context.Venta.FindAsync(id);
+
+        if (venta == null)
+        {
+            return NotFound();
+        }
+
+        return venta;
     }
 
     // GET: api/Venta
@@ -111,5 +135,6 @@ public class VentasController : ControllerBase
     {
         return await _context.Venta.ToListAsync();
     }
+}
 }
 }
