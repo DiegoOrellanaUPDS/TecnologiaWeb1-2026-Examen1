@@ -5,7 +5,7 @@ using Examen_1.Dominio;
 [Route("api/[controller]")]
 [ApiController]
 public class ProductosController : ControllerBase
-    // Misael Choque: desarrollo y control de productos.
+    // Misael Choque: implementación del servicio POST de productos.
 {
     private readonly Examen_1Context _context;
     public ProductosController(Examen_1Context context)
