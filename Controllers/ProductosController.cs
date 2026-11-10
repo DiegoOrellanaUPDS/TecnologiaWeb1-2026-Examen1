@@ -5,7 +5,7 @@ using Examen_1.Dominio;
 [Route("api/[controller]")]
 [ApiController]
 
-// Control productos - Jheferson Velasco (Rama f2 GET)
+// Control de productos - Jheferson Velasco (Rama f2 GET)
 
 public class ProductosController : ControllerBase
 {
@@ -16,6 +16,7 @@ public class ProductosController : ControllerBase
     }
 
     // GET: api/Producto
+   // GET: api/Producto
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Producto>>> GetProducto()
     {
@@ -76,6 +77,7 @@ public class ProductosController : ControllerBase
 
     // POST: api/Producto
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+   // POST: api/Producto
     [HttpPost]
     public async Task<ActionResult<Producto>> PostProducto(Producto producto)
     {
@@ -95,21 +97,6 @@ public class ProductosController : ControllerBase
         return CreatedAtAction("GetProducto", new { id = producto.Id }, producto);
     }
     
-    // DELETE personalizado
-    [HttpDelete("deleteProductoJhefersonVelasco/{id}")]
-    public async Task<IActionResult> deleteProductoJhefersonVelasco(int? id)
-    {
-        var producto = await _context.Producto.FindAsync(id);
-        if (producto == null)
-        {
-            return NotFound();
-        }
-
-        _context.Producto.Remove(producto);
-        await _context.SaveChangesAsync();
-
-        return NoContent();
-    }
 
     // DELETE: api/Producto/5
     [HttpDelete("{id}")]
