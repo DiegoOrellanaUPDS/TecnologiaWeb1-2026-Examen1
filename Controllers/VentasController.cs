@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Examen_1.Dominio;
 
+// Controlador de ventas de Marco
 [Route("api/[controller]")]
 [ApiController]
 public class VentasController : ControllerBase
