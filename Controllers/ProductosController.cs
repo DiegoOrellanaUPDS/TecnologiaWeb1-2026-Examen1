@@ -95,5 +95,14 @@ public class ProductosController : ControllerBase
     {
         return _context.Producto.Any(e => e.Id == id);
     }
+    [HttpGet("getProductoOvidioSulca")]
+    public async Task<IActionResult> getProductoOvidioSulca()
+    {
+        var productos = await _context.Set<Producto>()
+            .AsNoTracking()
+            .ToListAsync();
+
+        return Ok(productos);
+    }
 }
-// Ovidio Sulca - Comentario
+// Ovidio Sulca - Implementacion Get
