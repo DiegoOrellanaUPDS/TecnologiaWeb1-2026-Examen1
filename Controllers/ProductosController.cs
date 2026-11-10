@@ -86,7 +86,22 @@ public async Task<ActionResult<Producto>>
     }
 
     // DELETE: api/Producto/
-    [HttpDelete("{id}")]
+    // DELETE: api/Productos/deleteProductoCristianEzequielGallardo/5
+[HttpDelete("deleteProductoCristianEzequielGallardo/{id}")]
+public async Task<IActionResult> deleteProductoCristianEzequielGallardo(int id)
+{
+    var producto = await _context.Producto.FindAsync(id);
+
+    if (producto == null)
+    {
+        return NotFound();
+    }
+
+    _context.Producto.Remove(producto);
+    await _context.SaveChangesAsync();
+
+    return NoContent();
+}
     public async Task<IActionResult> DeleteProducto(int? id)
     {
         var producto = await _context.Producto.FindAsync(id);
