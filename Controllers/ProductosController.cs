@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Examen_1.Dominio;
+
 // Comentario exaamen
 [Route("api/[controller]")]
 [ApiController]
@@ -19,6 +20,7 @@ public class ProductosController : ControllerBase
         return await _context.Producto.ToListAsync();
     }
 
+    // Comentario modificado para la rama GET de Gerson
     // GET: api/Producto/5
     [HttpGet("{id}")]
     public async Task<ActionResult<Producto>> GetProducto(int id)
@@ -33,8 +35,19 @@ public class ProductosController : ControllerBase
         return producto;
     }
 
+    // GET específico con identificador propio
+    [HttpGet("gerson/{id}")]
+    public async Task<ActionResult<Producto>> getProductoGersonCari(int id)
+    {
+        var producto = await _context.Producto.FindAsync(id);
+        if (producto == null)
+        {
+            return NotFound();
+        }
+        return producto;
+    }
+
     // PUT: api/Producto/5
-    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [HttpPut("{id}")]
     public async Task<IActionResult> PutProducto(int? id, Producto producto)
     {
@@ -65,7 +78,6 @@ public class ProductosController : ControllerBase
     }
 
     // POST: api/Producto
-    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [HttpPost]
     public async Task<ActionResult<Producto>> PostProducto(Producto producto)
     {
