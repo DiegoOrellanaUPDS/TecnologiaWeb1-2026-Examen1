@@ -13,6 +13,7 @@ public class ProductosController : ControllerBase
     }
 
     // GET: api/Producto
+   // GET: api/Producto
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Producto>>> GetProducto()
     {
@@ -31,6 +32,13 @@ public class ProductosController : ControllerBase
         }
 
         return producto;
+    }
+
+    // GET personalizado
+    [HttpGet("getProductoJhefersonVelasco")]
+    public async Task<ActionResult<IEnumerable<Producto>>> getProductoJhefersonVelasco()
+    {
+        return await _context.Producto.ToListAsync();
     }
 
     // PUT: api/Producto/5
@@ -66,6 +74,7 @@ public class ProductosController : ControllerBase
 
     // POST: api/Producto
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+   // POST: api/Producto
     [HttpPost]
     public async Task<ActionResult<Producto>> PostProducto(Producto producto)
     {
@@ -74,6 +83,17 @@ public class ProductosController : ControllerBase
 
         return CreatedAtAction("GetProducto", new { id = producto.Id }, producto);
     }
+
+    // POST personalizado
+    [HttpPost("postProductoJhefersonVelasco")]
+    public async Task<ActionResult<Producto>> postProductoJhefersonVelasco(Producto producto)
+    {
+        _context.Producto.Add(producto);
+        await _context.SaveChangesAsync();
+
+        return CreatedAtAction("GetProducto", new { id = producto.Id }, producto);
+    }
+    
 
     // DELETE: api/Producto/5
     [HttpDelete("{id}")]
