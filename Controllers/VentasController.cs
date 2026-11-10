@@ -95,6 +95,7 @@ public class VentasController : ControllerBase
     {
         return _context.Venta.Any(e => e.Id == id);
     }
+    //Controlador Post
     [HttpPost("Post/Venta/YeymiRivera")]
     public async Task<IActionResult> PostVentaYeymi(string codigoventa, string codigocliente, string codigovendedor)
     {
