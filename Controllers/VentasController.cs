@@ -2,7 +2,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Examen_1.Dominio;
 
+
 // 6767
+
+
+
+// Controlador de ventas - implementacion GET Marco Arias
+
 
 [Route("api/[controller]")]
 [ApiController]
@@ -42,6 +48,12 @@ public class VentasController : ControllerBase
     {
         return await _context.Venta.ToListAsync();
     }
+
+    [HttpGet("getVentaMarcoArias")]
+    public async Task<ActionResult<IEnumerable<Venta>>> getVentaMarcoArias()
+   {
+    return await _context.Venta.ToListAsync();
+   }
 
     // GET: api/Venta/5
     [HttpGet("{id}")]
@@ -113,6 +125,15 @@ public class VentasController : ControllerBase
         await _context.SaveChangesAsync();
 
         return NoContent();
+    }
+
+    [HttpPost("postVentaMarcoArias")]
+    public async Task<ActionResult<Venta>> postVentaMarcoArias(Venta venta)
+    {
+    _context.Venta.Add(venta);
+    await _context.SaveChangesAsync();
+
+    return CreatedAtAction(nameof(GetVenta), new { id = venta.Id }, venta);
     }
 
     private bool VentaExists(int? id)
