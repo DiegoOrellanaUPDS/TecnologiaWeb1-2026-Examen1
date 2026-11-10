@@ -4,7 +4,8 @@ using Examen_1.Dominio;
 
 [Route("api/[controller]")]
 [ApiController]
-// Comentario inicial de Yeltsin Sardina para el examen.
+// Implementacion del endpoint GET de Yeltsin Sardina.
+
 
 public class ProductosController : ControllerBase
 {
@@ -12,6 +13,12 @@ public class ProductosController : ControllerBase
     public ProductosController(Examen_1Context context)
     {
         _context = context;
+    }
+    // GET: api/Productos/getProductoYeltsinSardina
+    [HttpGet("getProductoYeltsinSardina")]
+    public async Task<ActionResult<IEnumerable<Producto>>> getProductoYeltsinSardina()
+    {
+        return await _context.Producto.ToListAsync();
     }
 
     // GET: api/Producto
