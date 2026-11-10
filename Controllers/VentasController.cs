@@ -95,4 +95,10 @@ public class VentasController : ControllerBase
     {
         return _context.Venta.Any(e => e.Id == id);
     }
+    [HttpGet("GetVentaYEYMIRIVERA")]
+    public async Task<IActionResult> GetVentaYeymi()
+    {
+    var ventas = await _context.Venta.ToListAsync();
+            return Ok(ventas);
+    }
 }
