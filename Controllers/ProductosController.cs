@@ -5,21 +5,19 @@ using Examen_1.Dominio;
 [Route("api/[controller]")]
 [ApiController]
 public class ProductosController : ControllerBase
-    // Misael Choque: implementación del servicio POST de productos.
+// Misael Choque: integración de operaciones de productos.
 {
     private readonly Examen_1Context _context;
     public ProductosController(Examen_1Context context)
     {
         _context = context;
     }
-
     // GET: api/Producto
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<Producto>>> GetProducto()
+    [HttpGet("getProductoMisaelChoque")]
+    public async Task<ActionResult<IEnumerable<Producto>>> GetProductoMisaelChoque()
     {
-        return await _context.Producto.ToListAsync();
+    return await _context.Producto.ToListAsync();
     }
-
     // GET: api/Producto/5
     [HttpGet("{id}")]
     public async Task<ActionResult<Producto>> GetProducto(int id)
