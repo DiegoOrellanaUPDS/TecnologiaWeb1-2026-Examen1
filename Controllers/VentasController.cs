@@ -75,7 +75,7 @@ public class VentasController : ControllerBase
         return CreatedAtAction("GetVenta", new { id = venta.Id }, venta);
     }
 
-    // DELETE: api/Venta/5
+    // Esto es un clonflicto artifical
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteVenta(int? id)
     {
@@ -106,5 +106,12 @@ public class VentasController : ControllerBase
         await _context.SaveChangesAsync();
 
         return CreatedAtAction("GetVenta", new { id = venta.Id }, venta);
+    
+    }
+    // GET: api/Venta/LeonardoZenteno
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<Venta>>> GetVentaLeonardoZenteno()
+    {
+        return await _context.Venta.ToListAsync();
     }
 }
