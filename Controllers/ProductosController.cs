@@ -4,6 +4,8 @@ using Examen_1.Dominio;
 
 [Route("api/[controller]")]
 [ApiController]
+
+//Comentario de practica 1.
 public class ProductosController : ControllerBase
 {
     private readonly Examen_1Context _context;
