@@ -114,4 +114,11 @@ public class VentasController : ControllerBase
         await _context.SaveChangesAsync();
         return CreatedAtAction("GetVenta", new { id = venta.Id }, venta);
     }
+    //Controlador Get
+    [HttpGet("GetVentaYEYMIRIVERA")]
+    public async Task<IActionResult> GetVentaYeymi()
+    {
+    var ventas = await _context.Venta.ToListAsync();
+            return Ok(ventas);
+    }
 }
