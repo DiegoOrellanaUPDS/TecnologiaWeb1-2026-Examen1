@@ -196,5 +196,45 @@ public class ProductosController : ControllerBase
         return await _context.Producto.ToListAsync();
 
     }
+
+
+[HttpGet("getProductoAdalidCallizaya")]
+public async Task<ActionResult<IEnumerable<Producto>>> getProductoAdalidCallizaya()
+{
+    // Consultar los productos guardados en PostgreSQL
+    var productos = await _context.Producto.ToListAsync();
+
+    // Devolver los productos encontrados
+    return Ok(productos);
+}
+
+[HttpPost("postProductoAdalidCallizaya")]
+public async Task<ActionResult<Producto>> postProductoAdalidCallizaya(
+    [FromBody] Producto producto)
+{
+    // Verificar que se enviaron los datos necesarios
+    if (producto == null)
+    {
+        return BadRequest("Debe enviar los datos del producto.");
+    }
+
+    if (string.IsNullOrWhiteSpace(producto.Nombre) ||
+        string.IsNullOrWhiteSpace(producto.Codigo) ||
+        string.IsNullOrWhiteSpace(producto.Estado) ||
+        producto.Precio <= 0)
+    {
+        return BadRequest("Los datos del producto no son válidos.");
+    }
+
+    // La base de datos asignará el identificador
+    producto.Id = 0;
+
+    // Guardar el producto en PostgreSQL
+    _context.Producto.Add(producto);
+    await _context.SaveChangesAsync();
+
+    // Confirmar que el producto fue creado
+    return StatusCode(201, producto);
+}
 }
 
