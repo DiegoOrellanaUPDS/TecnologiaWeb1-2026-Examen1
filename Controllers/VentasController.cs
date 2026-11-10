@@ -90,6 +90,22 @@ public class VentasController : ControllerBase
 
         return CreatedAtAction(nameof(GetVenta), new { id = venta.Id }, venta);
     }
+    // DELETE: api/Ventas/deleteVentaAbrahamValeriano/5
+    [HttpDelete("deleteVentaAbrahamValeriano/{id}")]
+    public async Task<IActionResult> deleteVentaAbrahamValeriano(int id)
+    {
+        var venta = await _context.Venta.FindAsync(id);
+
+        if (venta == null)
+        {
+            return NotFound();
+        }
+
+        _context.Venta.Remove(venta);
+        await _context.SaveChangesAsync();
+
+        return NoContent();
+    }
 
     // DELETE: api/Venta/5
     [HttpDelete("{id}")]
