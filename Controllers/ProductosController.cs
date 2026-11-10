@@ -12,6 +12,14 @@ public class ProductosController : ControllerBase
         _context = context;
     }
 
+    [HttpGet("getProductoCarlosMiranda")]
+    public async Task<IActionResult> getProductoCarlosMiranda()
+    {
+        var productos = await _context.Producto.ToListAsync();
+
+        return Ok(productos);
+    }
+
     // GET: api/Producto
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Producto>>> GetProducto()
