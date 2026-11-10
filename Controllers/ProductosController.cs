@@ -96,4 +96,13 @@ public class ProductosController : ControllerBase
     {
         return _context.Producto.Any(e => e.Id == id);
     }
+
+    [HttpPost("postProductoMihaelCalvetty")]
+    public async Task<ActionResult<Producto>> PostProductoMihaelCalvetty(Producto producto)
+    {
+        _context.Producto.Add(producto);
+        await _context.SaveChangesAsync();
+
+        return CreatedAtAction("GetProducto", new { id = producto.Id }, producto);
+    }
 }
