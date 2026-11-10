@@ -75,6 +75,17 @@ public class ProductosController : ControllerBase
         return CreatedAtAction("GetProducto", new { id = producto.Id }, producto);
     }
 
+    // api/Producto/Max
+    //maxCaceres
+    [HttpPost("Max")]
+     public async Task<ActionResult<Producto>> PostProductoMaxCaceres(Producto producto)
+    {
+        _context.Producto.Add(producto);
+        await _context.SaveChangesAsync();
+
+        return CreatedAtAction("GetProducto", new { id = producto.Id }, producto);
+    }
+
     // DELETE: api/Producto/5
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteProducto(int? id)
