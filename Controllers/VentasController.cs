@@ -95,7 +95,11 @@ public class VentasController : ControllerBase
     {
         return _context.Venta.Any(e => e.Id == id);
     }
+<<<<<<< HEAD
     // Comentario rama get Venta Emanuel diferente
+=======
+    // Comentario rama get
+>>>>>>> f2-Emanuel-Kilibarda-get
     [HttpGet("getVentaEmanuelKilibarda")]
     public async Task<ActionResult<IEnumerable<Venta>>> getVentaEmanuelKilibarda()
     {
