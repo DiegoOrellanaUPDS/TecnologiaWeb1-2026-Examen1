@@ -4,6 +4,7 @@ using Examen_1.Dominio;
 
 [Route("api/[controller]")]
 [ApiController]
+// AbrahamValeriano: comentario inicial para integracion
 public class VentasController : ControllerBase
 {
     private readonly Examen_1Context _context;
