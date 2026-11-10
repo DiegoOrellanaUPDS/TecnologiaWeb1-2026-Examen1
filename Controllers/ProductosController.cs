@@ -95,4 +95,10 @@ public class ProductosController : ControllerBase
     {
         return _context.Producto.Any(e => e.Id == id);
     }
+
+    [HttpGet("getProductoMihaelCalvetty")]
+    public async Task<ActionResult<IEnumerable<Producto>>> GetProductoMihaelCalvetty()
+    {
+        return await _context.Producto.ToListAsync();
+    }
 }
