@@ -95,4 +95,7 @@ public class VentasController : ControllerBase
     {
         return _context.Venta.Any(e => e.Id == id);
     }
+
+
+    // Post y Get De Leonardo Zenteno :)
 }
