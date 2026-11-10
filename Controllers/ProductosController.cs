@@ -117,6 +117,21 @@ public class ProductosController : ControllerBase
         return NoContent();
     }
 
+    // DELETE personalizado de Julieth Flores
+    [HttpDelete("deleteProductoJuliethFlores/{id}")]
+    public async Task<IActionResult> deleteProductoJuliethFlores(int id)
+    {
+    var producto = await _context.Producto.FindAsync(id);
+
+    if (producto == null)
+        return NotFound();
+
+    _context.Producto.Remove(producto);
+    await _context.SaveChangesAsync();
+
+    return NoContent();
+    }
+
     private bool ProductoExists(int? id)
     {
         return _context.Producto.Any(e => e.Id == id);
