@@ -6,6 +6,7 @@ using Examen_1.Dominio;
 [ApiController]
 public class ProductosController : ControllerBase
 {
+    // Controlador de productos - Trabajo de Junior Cardozo
     private readonly Examen_1Context _context;
     public ProductosController(Examen_1Context context)
     {
