@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Examen_1.Dominio;
 
+//no es 6767
+
 [Route("api/[controller]")]
 [ApiController]
 public class VentasController : ControllerBase
