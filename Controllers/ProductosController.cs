@@ -20,7 +20,8 @@ public class ProductosController : ControllerBase
         return await _context.Producto.ToListAsync();
     }
 
-    // Comentario modificado para la rama POST de Gerson
+    // Comentario modificado para la rama GET de Gerson
+
     // GET: api/Producto/5
     [HttpGet("{id}")]
     public async Task<ActionResult<Producto>> GetProducto(int id)
@@ -32,6 +33,18 @@ public class ProductosController : ControllerBase
             return NotFound();
         }
 
+        return producto;
+    }
+
+    // GET específico con identificador propio
+    [HttpGet("gerson/{id}")]
+    public async Task<ActionResult<Producto>> getProductoGersonCari(int id)
+    {
+        var producto = await _context.Producto.FindAsync(id);
+        if (producto == null)
+        {
+            return NotFound();
+        }
         return producto;
     }
 
@@ -65,7 +78,11 @@ public class ProductosController : ControllerBase
         return NoContent();
     }
 
+<<<<<<< HEAD
     // POST: api/Producto/GersonCari
+=======
+    // POST: api/Producto
+>>>>>>> f2-gerson-cari-get
     [HttpPost]
     public async Task<ActionResult<Producto>> postProductoGersonCari(Producto producto)
     {
