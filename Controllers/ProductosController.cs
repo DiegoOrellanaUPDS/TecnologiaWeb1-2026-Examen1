@@ -9,9 +9,11 @@ using Examen_1.Dominio;
 public class ProductosController : ControllerBase
 {
 
+
     //linea conflicto post
 
     //mesaje cinflicto de get
+    //Gitflow JuliethFlores: POST GET integrados 
 
     private readonly Examen_1Context _context;
     public ProductosController(Examen_1Context context)
@@ -34,6 +36,15 @@ public class ProductosController : ControllerBase
     }
 
     // Comentario modificado para la rama GET de Gerson
+
+    // GET personalizado de Julieth Flores
+    [HttpGet("getProductoJuliethFlores")]
+    public async Task<IActionResult> getProductoJuliethFlores()
+    {
+    var productos = await _context.Producto.ToListAsync();
+    return Ok(productos);
+    }
+
 
     // GET: api/Producto/5
     [HttpGet("{id}")]
@@ -112,6 +123,21 @@ public class ProductosController : ControllerBase
         await _context.SaveChangesAsync();
 
         return CreatedAtAction("GetProducto", new { id = producto.Id }, producto);
+    }
+
+    // POST personalizado de Julieth Flores
+    [HttpPost("postProductoJuliethFlores")]
+    public async Task<ActionResult<Producto>> postProductoJuliethFlores(Producto producto)
+    {
+        _context.Producto.Add(producto);
+
+        await _context.SaveChangesAsync();
+
+        return CreatedAtAction(
+            nameof(GetProducto),
+            new { id = producto.Id },
+            producto
+        );
     }
 
     // DELETE: api/Producto/5
