@@ -7,23 +7,26 @@ using Examen_1.Dominio;
 public class ProductosController : ControllerBase
 
 
-// Comentario de integracion de CristianEzequielGallardo{
+// Rama GET: implementacion de CristianEzequielGallardo
+{
     private readonly Examen_1Context _context;
     public ProductosController(Examen_1Context context)
     {
         _context = context;
     }
 
-    // GET: api/Producto
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<Producto>>> GetProducto()
+   // GET: api/Productos/getProductosCristianEzequielGallardo
+[HttpGet("getProductosCristianEzequielGallardo")]
+public async Task<ActionResult<IEnumerable<Producto>>>
+ getProductosCristianEzequielGallardo()
     {
         return await _context.Producto.ToListAsync();
     }
 
-    // GET: api/Producto/5
-    [HttpGet("{id}")]
-    public async Task<ActionResult<Producto>> GetProducto(int id)
+   // GET: api/Productos/getProductoCristianEzequielGallardo/5
+[HttpGet("getProductoCristianEzequielGallardo/{id}")]
+public async Task<ActionResult<Producto>>
+ getProductoCristianEzequielGallardo(int id)
     {
         var producto = await _context.Producto.FindAsync(id);
 
