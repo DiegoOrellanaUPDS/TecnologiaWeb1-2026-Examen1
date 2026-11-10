@@ -5,7 +5,11 @@ using Examen_1.Dominio;
 [Route("api/[controller]")]
 [ApiController]
 
+<<<<<<< HEAD
 // Control de productos - Jheferson Velasco
+=======
+// Control de productos - Jheferson Velasco (Rama f1 POST)
+>>>>>>> f1-Jheferson-Velasco-post
 
 public class ProductosController : ControllerBase
 {
