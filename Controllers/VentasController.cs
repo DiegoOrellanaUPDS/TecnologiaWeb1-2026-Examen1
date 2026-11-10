@@ -4,7 +4,7 @@ using Examen_1.Dominio;
 
 [Route("api/[controller]")]
 [ApiController]
-// AbrahamValeriano: comentario inicial para integracion
+// AbrahamValeriano: version GET para integracion
 public class VentasController : ControllerBase
 {
     private readonly Examen_1Context _context;
@@ -16,6 +16,12 @@ public class VentasController : ControllerBase
     // GET: api/Venta
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Venta>>> GetVenta()
+    {
+        return await _context.Venta.ToListAsync();
+    }
+    // GET: api/Ventas/getVentaAbrahamValeriano
+    [HttpGet("getVentaAbrahamValeriano")]
+    public async Task<ActionResult<IEnumerable<Venta>>> getVentaAbrahamValeriano()
     {
         return await _context.Venta.ToListAsync();
     }
