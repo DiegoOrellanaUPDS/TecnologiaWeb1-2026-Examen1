@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Examen_1.Dominio;
-
+// Comentario exaamen
 [Route("api/[controller]")]
 [ApiController]
 public class ProductosController : ControllerBase
