@@ -12,13 +12,15 @@ public class ProductosController : ControllerBase
     {
         _context = context;
     }
-
     // GET: api/Producto
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<Producto>>> GetProducto()
+    [HttpGet("getProductoMisaelChoque")]
+    public async Task<ActionResult<IEnumerable<Producto>>> GetProductoMisaelChoque()
     {
-        return await _context.Producto.ToListAsync();
+    return await _context.Producto.ToListAsync();
     }
+
+    
+    
 
     // GET: api/Producto/5
     [HttpGet("{id}")]
