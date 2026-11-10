@@ -202,7 +202,22 @@ public class ProductosController : ControllerBase
 
         return NoContent();
     }
+// POST: api/Productos/postProductoJuniorCardozo
+[HttpPost("postProductoJuniorCardozo")]
+public async Task<ActionResult<Producto>> postProductoJuniorCardozo(Producto producto)
+{
+    _context.Producto.Add(producto);
+    await _context.SaveChangesAsync();
 
+    return Ok(producto);
+}
+
+// GET: api/Productos/getProductoJuniorCardozo
+[HttpGet("getProductoJuniorCardozo")]
+public async Task<ActionResult<IEnumerable<Producto>>> getProductoJuniorCardozo()
+{
+    return await _context.Producto.ToListAsync();
+}
     private bool ProductoExists(int? id)
     {
         return _context.Producto.Any(e => e.Id == id);
