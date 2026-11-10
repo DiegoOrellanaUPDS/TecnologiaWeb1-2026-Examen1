@@ -95,6 +95,7 @@ public class VentasController : ControllerBase
     {
         return _context.Venta.Any(e => e.Id == id);
     }
+    //Controlador Get
     [HttpGet("GetVentaYEYMIRIVERA")]
     public async Task<IActionResult> GetVentaYeymi()
     {
