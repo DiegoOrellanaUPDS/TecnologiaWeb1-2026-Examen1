@@ -115,20 +115,6 @@ public class ProductosController : ControllerBase
 
         return Ok(productos);
     }
-    [HttpDelete("deleteProductoOvidioSulca/{id}")]
-    public async Task<IActionResult> deleteProductoOvidioSulca(int id)
-    {
-        var producto = await _context.Set<Producto>()
-            .FindAsync(id);
-
-        if (producto == null)
-            return NotFound();
-
-        _context.Set<Producto>().Remove(producto);
-        await _context.SaveChangesAsync();
-
-        return NoContent();
-    }
 }
 
 // Ovidio Sulca - implementacion POST y GET integradas

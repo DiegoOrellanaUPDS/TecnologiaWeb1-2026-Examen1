@@ -115,18 +115,4 @@ public class VentasController : ControllerBase
 
         return Ok(ventas);
     }
-    [HttpDelete("deleteVentaOvidioSulca/{id}")]
-    public async Task<IActionResult> deleteVentaOvidioSulca(int id)
-    {
-        var venta = await _context.Set<Venta>()
-            .FindAsync(id);
-
-        if (venta == null)
-            return NotFound();
-
-        _context.Set<Venta>().Remove(venta);
-        await _context.SaveChangesAsync();
-
-        return NoContent();
-    }
 }
