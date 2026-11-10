@@ -112,3 +112,4 @@ public class VentasController : ControllerBase
         return await _context.Venta.ToListAsync();
     }
 }
+}
