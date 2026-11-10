@@ -6,7 +6,16 @@ using Examen_1.Dominio;
 [ApiController]
 public class ProductosController : ControllerBase
 {
-    // Controlador de productos - Trabajo de Junior Cardozo
+    // Rama POST - Junior Cardozo
+    // POST: api/Productos/postProductoJuniorCardozo
+[HttpPost("postProductoJuniorCardozo")]
+public async Task<ActionResult<Producto>> postProductoJuniorCardozo(Producto producto)
+{
+    _context.Producto.Add(producto);
+    await _context.SaveChangesAsync();
+
+    return Ok(producto);
+}
     private readonly Examen_1Context _context;
     public ProductosController(Examen_1Context context)
     {
