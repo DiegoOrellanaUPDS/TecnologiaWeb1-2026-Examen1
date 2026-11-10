@@ -19,6 +19,12 @@ public class VentasController : ControllerBase
         return await _context.Venta.ToListAsync();
     }
 
+    [HttpGet("getVentaMarcoArias")]
+    public async Task<ActionResult<IEnumerable<Venta>>> getVentaMarcoArias()
+   {
+    return await _context.Venta.ToListAsync();
+   }
+
     // GET: api/Venta/5
     [HttpGet("{id}")]
     public async Task<ActionResult<Venta>> GetVenta(int id)
