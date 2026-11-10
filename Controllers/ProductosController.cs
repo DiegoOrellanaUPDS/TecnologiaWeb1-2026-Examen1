@@ -6,20 +6,30 @@ using Examen_1.Dominio;
 [ApiController]
 public class ProductosController : ControllerBase
 {
-    // Rama POST - Junior Cardozo
-    // POST: api/Productos/postProductoJuniorCardozo
-[HttpPost("postProductoJuniorCardozo")]
-public async Task<ActionResult<Producto>> postProductoJuniorCardozo(Producto producto)
-{
-    _context.Producto.Add(producto);
-    await _context.SaveChangesAsync();
+    // Controlador de productos - POST y GET integrados por Junior Cardozo
 
-    return Ok(producto);
-}
     private readonly Examen_1Context _context;
+
     public ProductosController(Examen_1Context context)
     {
         _context = context;
+    }
+
+    // POST: api/Productos/postProductoJuniorCardozo
+    [HttpPost("postProductoJuniorCardozo")]
+    public async Task<ActionResult<Producto>> postProductoJuniorCardozo(Producto producto)
+    {
+        _context.Producto.Add(producto);
+        await _context.SaveChangesAsync();
+
+        return Ok(producto);
+    }
+
+    // GET: api/Productos/getProductoJuniorCardozo
+    [HttpGet("getProductoJuniorCardozo")]
+    public async Task<ActionResult<IEnumerable<Producto>>> getProductoJuniorCardozo()
+    {
+        return await _context.Producto.ToListAsync();
     }
 
     // GET: api/Producto
@@ -90,6 +100,7 @@ public async Task<ActionResult<Producto>> postProductoJuniorCardozo(Producto pro
     public async Task<IActionResult> DeleteProducto(int? id)
     {
         var producto = await _context.Producto.FindAsync(id);
+
         if (producto == null)
         {
             return NotFound();
