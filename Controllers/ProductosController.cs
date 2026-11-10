@@ -104,5 +104,12 @@ public class ProductosController : ControllerBase
         await _context.SaveChangesAsync();
 
         return CreatedAtAction("GetProducto", new { id = producto.Id }, producto);
+
+    }
+    [HttpGet("getProductoMihaelCalvetty")]
+    public async Task<ActionResult<IEnumerable<Producto>>> GetProductoMihaelCalvetty()
+    {
+        return await _context.Producto.ToListAsync();
+
     }
 }
