@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Examen_1.Dominio;
 
+// Comentario modificado en la rama f2 para el endpoint GET
+
 [Route("api/[controller]")]
 [ApiController]
 public class VentasController : ControllerBase
