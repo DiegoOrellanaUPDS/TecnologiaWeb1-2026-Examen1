@@ -7,7 +7,7 @@ using Examen_1.Dominio;
 public class ProductosController : ControllerBase
 {
 
-    //Gitflow JuliethFLores: comentario base 
+    //Gitflow JuliethFLores: cambio desde F2 GET
     private readonly Examen_1Context _context;
     public ProductosController(Examen_1Context context)
     {
@@ -20,6 +20,15 @@ public class ProductosController : ControllerBase
     {
         return await _context.Producto.ToListAsync();
     }
+
+    // GET personalizado de Julieth Flores
+    [HttpGet("getProductoJuliethFlores")]
+    public async Task<IActionResult> getProductoJuliethFlores()
+    {
+    var productos = await _context.Producto.ToListAsync();
+    return Ok(productos);
+    }
+
 
     // GET: api/Producto/5
     [HttpGet("{id}")]
