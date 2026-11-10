@@ -7,7 +7,12 @@ using Examen_1.Dominio;
 [Route("api/[controller]")]
 [ApiController]
 
+<<<<<<< HEAD
 // Comentario practico.
+=======
+// Control de productos - Jheferson Velasco (Rama f2 GET)
+
+>>>>>>> f0-Jheferson-Velasco
 public class ProductosController : ControllerBase
 {
 
@@ -32,6 +37,7 @@ public class ProductosController : ControllerBase
     }
 
     // GET: api/Producto
+   // GET: api/Producto
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Producto>>> GetProducto()
     {
@@ -70,6 +76,7 @@ public class ProductosController : ControllerBase
         return producto;
     }
 
+<<<<<<< HEAD
     // GET específico con identificador propio
     [HttpGet("gerson/{id}")]
     public async Task<ActionResult<Producto>> getProductoGersonCari(int id)
@@ -80,6 +87,13 @@ public class ProductosController : ControllerBase
             return NotFound();
         }
         return producto;
+=======
+    // GET personalizado
+    [HttpGet("getProductoJhefersonVelasco")]
+    public async Task<ActionResult<IEnumerable<Producto>>> getProductoJhefersonVelasco()
+    {
+        return await _context.Producto.ToListAsync();
+>>>>>>> f0-Jheferson-Velasco
     }
 
     // PUT: api/Producto/5
@@ -123,7 +137,11 @@ public class ProductosController : ControllerBase
 
     // POST: api/Producto
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+<<<<<<< HEAD
 
+=======
+   // POST: api/Producto
+>>>>>>> f0-Jheferson-Velasco
     [HttpPost]
     public async Task<ActionResult<Producto>> postProductoGersonCari(Producto producto)
     {
@@ -133,16 +151,23 @@ public class ProductosController : ControllerBase
         return CreatedAtAction("GetProducto", new { id = producto.Id }, producto);
     }
 
+<<<<<<< HEAD
     // api/Producto/Max
     //maxCaceres
     [HttpPost("Max")]
      public async Task<ActionResult<Producto>> PostProductoMaxCaceres(Producto producto)
+=======
+    // POST personalizado
+    [HttpPost("postProductoJhefersonVelasco")]
+    public async Task<ActionResult<Producto>> postProductoJhefersonVelasco(Producto producto)
+>>>>>>> f0-Jheferson-Velasco
     {
         _context.Producto.Add(producto);
         await _context.SaveChangesAsync();
 
         return CreatedAtAction("GetProducto", new { id = producto.Id }, producto);
     }
+<<<<<<< HEAD
 
     // POST personalizado de Julieth Flores
     [HttpPost("postProductoJuliethFlores")]
@@ -158,6 +183,9 @@ public class ProductosController : ControllerBase
             producto
         );
     }
+=======
+    
+>>>>>>> f0-Jheferson-Velasco
 
     // DELETE: api/Producto/5
     [HttpDelete("{id}")]
