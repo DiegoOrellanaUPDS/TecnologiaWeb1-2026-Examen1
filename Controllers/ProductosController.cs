@@ -76,20 +76,19 @@ public class ProductosController : ControllerBase
     
     
     // DELETE: api/Producto/5
-    [HttpDelete("deleteProductoMisaelChoque/{id}")]
-    public async Task<IActionResult> deleteProductoMisaelChoque(int? id)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteProducto(int? id)
     {
-      var producto = await _context.Producto.FindAsync(id);
+        var producto = await _context.Producto.FindAsync(id);
+        if (producto == null)
+        {
+            return NotFound();
+        }
 
-    if (producto == null)
-    {
-        return NotFound();
-    }
+        _context.Producto.Remove(producto);
+        await _context.SaveChangesAsync();
 
-    _context.Producto.Remove(producto);
-    await _context.SaveChangesAsync();
-
-    return NoContent();
+        return NoContent();
     }
 
     private bool ProductoExists(int? id)
