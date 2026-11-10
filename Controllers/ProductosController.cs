@@ -111,22 +111,7 @@ public class ProductosController : ControllerBase
 
         return NoContent();
     }
-    // DELETE: api/Productos/deleteProductoJuniorCardozo/5
-[HttpDelete("deleteProductoJuniorCardozo/{id}")]
-public async Task<IActionResult> deleteProductoJuniorCardozo(int id)
-{
-    var producto = await _context.Producto.FindAsync(id);
 
-    if (producto == null)
-    {
-        return NotFound();
-    }
-
-    _context.Producto.Remove(producto);
-    await _context.SaveChangesAsync();
-
-    return NoContent();
-}
     private bool ProductoExists(int? id)
     {
         return _context.Producto.Any(e => e.Id == id);
