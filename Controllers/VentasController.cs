@@ -7,6 +7,7 @@ using Examen_1.Dominio;
 public class VentasController : ControllerBase
 {
     private readonly Examen_1Context _context;
+    // CONTROL DE VERSIONES: comentario base de Yasmin Diaz.
     public VentasController(Examen_1Context context)
     {
         _context = context;
