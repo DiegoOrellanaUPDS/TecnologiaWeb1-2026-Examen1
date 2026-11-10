@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Examen_1.Dominio;
 
+// AdalidCallizaya: comentario base para el conflicto
 [Route("api/[controller]")]
 [ApiController]
 public class ProductosController : ControllerBase
