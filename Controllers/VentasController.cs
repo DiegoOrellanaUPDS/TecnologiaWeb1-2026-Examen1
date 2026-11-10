@@ -15,6 +15,7 @@ using Examen_1.Dominio;
 public class VentasController : ControllerBase
 {
     private readonly Examen_1Context _context;
+// CONTROL DE VERSIONES: integracion POST y GET de Yasmin Diaz.
     public VentasController(Examen_1Context context)
     {
         _context = context;
@@ -68,6 +69,17 @@ public class VentasController : ControllerBase
 
         return venta;
     }
+    // GET de Yasmin Diaz - Grupo Venta
+    [HttpGet("getVentaYasminDiaz")]
+     public async Task<ActionResult<IEnumerable<Venta>>> getVentaYasminDiaz()
+     {
+     var ventas = await _context.Venta
+        .AsNoTracking()
+        .OrderBy(v => v.Id)
+        .ToListAsync();
+
+      return Ok(ventas);
+     }
 
     // PUT: api/Venta/5
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -109,6 +121,17 @@ public class VentasController : ControllerBase
         await _context.SaveChangesAsync();
 
         return CreatedAtAction("GetVenta", new { id = venta.Id }, venta);
+    }
+    // POST de Yasmin Diaz - Grupo Venta
+    [HttpPost("postVentaYasminDiaz")]
+     public async Task<ActionResult<Venta>> postVentaYasminDiaz(
+    [FromBody] Venta venta)
+    {
+    _context.Venta.Add(venta);
+
+    await _context.SaveChangesAsync();
+
+    return Created($"/api/Ventas/{venta.Id}", venta);
     }
 
     // DELETE: api/Venta/5
