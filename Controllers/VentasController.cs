@@ -97,5 +97,14 @@ public class VentasController : ControllerBase
     }
 
 
-    // Post y Get De Leonardo Zenteno :)
+    // Usando amend en f1
+    // POST: api/Venta/LeonardoZenteno
+    [HttpPost("LeonardoZenteno")]
+    public async Task<ActionResult<Venta>> PostVentaLeonardoZenteno(Venta venta)
+    {
+        _context.Venta.Add(venta);
+        await _context.SaveChangesAsync();
+
+        return CreatedAtAction("GetVenta", new { id = venta.Id }, venta);
+    }
 }
