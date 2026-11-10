@@ -18,6 +18,13 @@ public class ProductosController : ControllerBase
     {
         return await _context.Producto.ToListAsync();
     }
+    
+    // productos/max
+    [HttpGet("Max")]
+    public async Task<ActionResult<IEnumerable<Producto>>> GetProductoMaxCaceres()
+    {
+        return await _context.Producto.ToListAsync();
+    }
 
     // GET: api/Producto/5
     [HttpGet("{id}")]
