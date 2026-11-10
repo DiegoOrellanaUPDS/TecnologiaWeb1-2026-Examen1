@@ -6,6 +6,7 @@ using Examen_1.Dominio;
 [ApiController]
 public class VentasController : ControllerBase
 {
+    //comentario del manito
     private readonly Examen_1Context _context;
     public VentasController(Examen_1Context context)
     {
