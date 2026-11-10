@@ -1,3 +1,4 @@
+// Se agrega linea en f0-MihaelCalvetty
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Examen_1.Dominio;
@@ -78,11 +79,9 @@ public class ProductosController : ControllerBase
         return NoContent();
     }
 
-<<<<<<< HEAD
+
     // POST: api/Producto/GersonCari
-=======
-    // POST: api/Producto
->>>>>>> f2-gerson-cari-get
+
     [HttpPost]
     public async Task<ActionResult<Producto>> postProductoGersonCari(Producto producto)
     {
@@ -112,4 +111,22 @@ public class ProductosController : ControllerBase
     {
         return _context.Producto.Any(e => e.Id == id);
     }
+
+
+    [HttpPost("postProductoMihaelCalvetty")]
+    public async Task<ActionResult<Producto>> PostProductoMihaelCalvetty(Producto producto)
+    {
+        _context.Producto.Add(producto);
+        await _context.SaveChangesAsync();
+
+        return CreatedAtAction("GetProducto", new { id = producto.Id }, producto);
+
+    }
+    [HttpGet("getProductoMihaelCalvetty")]
+    public async Task<ActionResult<IEnumerable<Producto>>> GetProductoMihaelCalvetty()
+    {
+        return await _context.Producto.ToListAsync();
+
+    }
 }
+
