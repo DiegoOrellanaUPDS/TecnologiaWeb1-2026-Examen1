@@ -76,6 +76,32 @@ public async Task<ActionResult<IEnumerable<Producto>>> getProductoAdalidCallizay
         return NoContent();
     }
 
+    // DELETE propio de AdalidCallizaya
+[HttpDelete("deleteProductoAdalidCallizaya/{id:int}")]
+public async Task<IActionResult> deleteProductoAdalidCallizaya(int id)
+{
+    // Buscar el producto por su identificador
+    var producto = await _context.Producto.FindAsync(id);
+
+    if (producto == null)
+    {
+        return NotFound("El producto no existe.");
+    }
+
+    // Evitar eliminar productos de otros compañeros
+    if (string.IsNullOrWhiteSpace(producto.Codigo) ||
+        !producto.Codigo.StartsWith("ADALID-"))
+    {
+        return BadRequest("Solo puedo eliminar mis productos de prueba.");
+    }
+
+    // Eliminar y guardar en PostgreSQL
+    _context.Producto.Remove(producto);
+    await _context.SaveChangesAsync();
+
+    return NoContent();
+}
+
     // POST: api/Producto
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [HttpPost]
