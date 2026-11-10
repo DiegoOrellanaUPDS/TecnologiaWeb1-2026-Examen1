@@ -4,7 +4,7 @@ using Examen_1.Dominio;
 
 [Route("api/[controller]")]
 [ApiController]
-// AbrahamValeriano: comentario inicial para integracion
+// AbrahamValeriano: version POST para integracion
 public class VentasController : ControllerBase
 {
     private readonly Examen_1Context _context;
@@ -74,6 +74,15 @@ public class VentasController : ControllerBase
         await _context.SaveChangesAsync();
 
         return CreatedAtAction("GetVenta", new { id = venta.Id }, venta);
+    }
+    // POST: api/Ventas/postVentaAbrahamValeriano
+    [HttpPost("postVentaAbrahamValeriano")]
+    public async Task<ActionResult<Venta>> postVentaAbrahamValeriano(Venta venta)
+    {
+        _context.Venta.Add(venta);
+        await _context.SaveChangesAsync();
+
+        return CreatedAtAction(nameof(GetVenta), new { id = venta.Id }, venta);
     }
 
     // DELETE: api/Venta/5
