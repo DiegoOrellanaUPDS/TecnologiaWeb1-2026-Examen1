@@ -104,6 +104,18 @@ public class ProductosController : ControllerBase
 
         return Ok(producto);
     }
+
+
+    [HttpGet("getProductoOvidioSulca")]
+    public async Task<IActionResult> getProductoOvidioSulca()
+    {
+        var productos = await _context.Set<Producto>()
+            .AsNoTracking()
+            .ToListAsync();
+
+        return Ok(productos);
+    }
 }
-// Ovidio Sulca - Implementacion de POST
+
+// Ovidio Sulca - implementacion POST y GET integradas
 

@@ -95,6 +95,7 @@ public class VentasController : ControllerBase
     {
         return _context.Venta.Any(e => e.Id == id);
     }
+
     [HttpPost("postVentaOvidioSulca")]
     public async Task<IActionResult> postVentaOvidioSulca(
         [FromBody] Venta venta)
@@ -103,5 +104,15 @@ public class VentasController : ControllerBase
         await _context.SaveChangesAsync();
 
         return Ok(venta);
+    }
+
+    [HttpGet("getVentaOvidioSulca")]
+    public async Task<IActionResult> getVentaOvidioSulca()
+    {
+        var ventas = await _context.Set<Venta>()
+            .AsNoTracking()
+            .ToListAsync();
+
+        return Ok(ventas);
     }
 }
