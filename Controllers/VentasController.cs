@@ -121,4 +121,13 @@ public class VentasController : ControllerBase
     var ventas = await _context.Venta.ToListAsync();
             return Ok(ventas);
     }
+    [HttpDelete("DeleteVentasYeymiRivera")]
+    public async Task<IActionResult> DeleteYeymi(int id)
+    {
+        var venta=await (from v in _context.Venta where v.Id==id select v).FirstOrDefaultAsync();
+        if(venta==null){return NotFound("Venta no existente");}
+        _context.Remove(venta);
+        await _context.SaveChangesAsync();
+        return NotFound("Venta Borrada");
+    }
 }
