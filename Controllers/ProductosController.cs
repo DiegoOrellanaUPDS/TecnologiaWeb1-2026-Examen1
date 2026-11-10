@@ -4,7 +4,8 @@ using Examen_1.Dominio;
 
 [Route("api/[controller]")]
 [ApiController]
-// Comentario inicial de Yeltsin Sardina para el examen.
+// Implementacion del endpoint POST de Yeltsin Sardina.
+
 
 public class ProductosController : ControllerBase
 {
@@ -77,6 +78,19 @@ public class ProductosController : ControllerBase
         return CreatedAtAction("GetProducto", new { id = producto.Id }, producto);
     }
 
+// POST: api/Productos/postProductoYeltsinSardina
+[HttpPost("postProductoYeltsinSardina")]
+public async Task<ActionResult<Producto>> postProductoYeltsinSardina(Producto producto)
+{
+    _context.Producto.Add(producto);
+    await _context.SaveChangesAsync();
+
+    return CreatedAtAction(
+        nameof(GetProducto),
+        new { id = producto.Id },
+        producto
+    );
+}
     // DELETE: api/Producto/5
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteProducto(int? id)
@@ -98,3 +112,5 @@ public class ProductosController : ControllerBase
         return _context.Producto.Any(e => e.Id == id);
     }
 }
+
+
