@@ -4,6 +4,8 @@ using Examen_1.Dominio;
 
 [Route("api/[controller]")]
 [ApiController]
+// Comentario inicial de Yeltsin Sardina para el examen.
+
 public class ProductosController : ControllerBase
 {
     private readonly Examen_1Context _context;
