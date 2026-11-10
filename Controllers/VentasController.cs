@@ -2,7 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Examen_1.Dominio;
 
+
 // Controlador de ventas de Marco
+
 [Route("api/[controller]")]
 [ApiController]
 public class VentasController : ControllerBase
@@ -90,6 +92,15 @@ public class VentasController : ControllerBase
         await _context.SaveChangesAsync();
 
         return NoContent();
+    }
+
+    [HttpPost("postVentaMarcoArias")]
+    public async Task<ActionResult<Venta>> postVentaMarcoArias(Venta venta)
+    {
+    _context.Venta.Add(venta);
+    await _context.SaveChangesAsync();
+
+    return CreatedAtAction(nameof(GetVenta), new { id = venta.Id }, venta);
     }
 
     private bool VentaExists(int? id)
