@@ -7,7 +7,7 @@ using Examen_1.Dominio;
 public class ProductosController : ControllerBase
 {
 
-    //Gitflow JuliethFLores: comentario base 
+    //Gitflow JuliethFLores: cambio desde f1 POST
     private readonly Examen_1Context _context;
     public ProductosController(Examen_1Context context)
     {
@@ -75,6 +75,21 @@ public class ProductosController : ControllerBase
         await _context.SaveChangesAsync();
 
         return CreatedAtAction("GetProducto", new { id = producto.Id }, producto);
+    }
+
+    // POST personalizado de Julieth Flores
+    [HttpPost("postProductoJuliethFlores")]
+    public async Task<ActionResult<Producto>> postProductoJuliethFlores(Producto producto)
+    {
+        _context.Producto.Add(producto);
+
+        await _context.SaveChangesAsync();
+
+        return CreatedAtAction(
+            nameof(GetProducto),
+            new { id = producto.Id },
+            producto
+        );
     }
 
     // DELETE: api/Producto/5
