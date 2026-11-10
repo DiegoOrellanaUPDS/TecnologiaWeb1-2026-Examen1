@@ -5,9 +5,9 @@ using Examen_1.Dominio;
 [Route("api/[controller]")]
 [ApiController]
 public class ProductosController : ControllerBase
+{
 
-
-// Comentario de integracion de CristianEzequielGallardo{
+// Rama POST: implementacion de CristianEzequielGallardo
     private readonly Examen_1Context _context;
     public ProductosController(Examen_1Context context)
     {
@@ -21,7 +21,7 @@ public class ProductosController : ControllerBase
         return await _context.Producto.ToListAsync();
     }
 
-    // GET: api/Producto/5
+    // GET: api/Producto/
     [HttpGet("{id}")]
     public async Task<ActionResult<Producto>> GetProducto(int id)
     {
@@ -35,7 +35,7 @@ public class ProductosController : ControllerBase
         return producto;
     }
 
-    // PUT: api/Producto/5
+    // PUT: api/Producto/
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [HttpPut("{id}")]
     public async Task<IActionResult> PutProducto(int? id, Producto producto)
@@ -65,19 +65,17 @@ public class ProductosController : ControllerBase
 
         return NoContent();
     }
-
-    // POST: api/Producto
-    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-    [HttpPost]
-    public async Task<ActionResult<Producto>> PostProducto(Producto producto)
+// POST: api/Productos/postProductoCristianEzequielGallardo
+    [HttpPost("postProductoCristianEzequielGallardo")]
+    public async Task<ActionResult<Producto>> postProductoCristianEzequielGallardo(Producto producto)
     {
         _context.Producto.Add(producto);
         await _context.SaveChangesAsync();
 
-        return CreatedAtAction("GetProducto", new { id = producto.Id }, producto);
+        return StatusCode(201, producto);
     }
 
-    // DELETE: api/Producto/5
+    // DELETE: api/Producto/
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteProducto(int? id)
     {
