@@ -95,4 +95,20 @@ public class VentasController : ControllerBase
     {
         return _context.Venta.Any(e => e.Id == id);
     }
+ // Comentario rama post Venta Emanuel
+    [HttpPost("postVentaEmanuelKilibarda")]
+    public async Task<ActionResult<Venta>> postVentaEmanuelKilibarda(Venta venta)
+    {
+        _context.Venta.Add(venta);
+        await _context.SaveChangesAsync();
+
+        return CreatedAtAction("GetVenta", new { id = venta.Id }, venta);
+    }
+
+    // Comentario rama get Venta Emanuel diferente
+    [HttpGet("getVentaEmanuelKilibarda")]
+    public async Task<ActionResult<IEnumerable<Venta>>> getVentaEmanuelKilibarda()
+    {
+        return await _context.Venta.ToListAsync();
+    }
 }
