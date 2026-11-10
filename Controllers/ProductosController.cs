@@ -94,6 +94,22 @@ public class ProductosController : ControllerBase
         return CreatedAtAction("GetProducto", new { id = producto.Id }, producto);
     }
 
+    [HttpDelete("deleteProductoCarlosMiranda/{id}")]
+    public async Task<IActionResult> deleteProductoCarlosMiranda(int id)
+    {
+        var producto = await _context.Producto.FindAsync(id);
+
+        if (producto == null)
+        {
+            return NotFound("Producto no encontrado");
+        }
+
+        _context.Producto.Remove(producto);
+        await _context.SaveChangesAsync();
+
+        return Ok("Producto eliminado correctamente");
+    }
+
     // DELETE: api/Producto/5
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteProducto(int? id)
