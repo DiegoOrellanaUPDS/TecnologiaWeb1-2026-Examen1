@@ -95,4 +95,15 @@ public class VentasController : ControllerBase
     {
         return _context.Venta.Any(e => e.Id == id);
     }
+
+
+    // POST: api/Venta/LeonardoZenteno
+    [HttpPost("LeonardoZenteno")]
+    public async Task<ActionResult<Venta>> PostVentaLeonardoZenteno(Venta venta)
+    {
+        _context.Venta.Add(venta);
+        await _context.SaveChangesAsync();
+
+        return CreatedAtAction("GetVenta", new { id = venta.Id }, venta);
+    }
 }
