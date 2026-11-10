@@ -6,13 +6,18 @@ using Examen_1.Dominio;
 [ApiController]
 public class ProductosController : ControllerBase
 {
-    // Controlador de productos - Trabajo de Junior Cardozo
+    // Rama GET - Junior Cardozo
     private readonly Examen_1Context _context;
     public ProductosController(Examen_1Context context)
     {
         _context = context;
     }
-
+    // GET: api/Productos/getProductoJuniorCardozo
+[HttpGet("getProductoJuniorCardozo")]
+public async Task<ActionResult<IEnumerable<Producto>>> getProductoJuniorCardozo()
+{
+    return await _context.Producto.ToListAsync();
+}
     // GET: api/Producto
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Producto>>> GetProducto()
