@@ -6,7 +6,7 @@ using Examen_1.Dominio;
 [ApiController]
 public class ProductosController : ControllerBase
 
-// DiegoHoyos: comentario inicial para integración de ramas
+// DiegoHoyos: modificación realizada en la rama POST
 
 {
     private readonly Examen_1Context _context;
@@ -76,6 +76,17 @@ public class ProductosController : ControllerBase
         await _context.SaveChangesAsync();
 
         return CreatedAtAction("GetProducto", new { id = producto.Id }, producto);
+    }
+
+        // POST: api/Productos/postProductoDiegoHoyos
+    [HttpPost("postProductoDiegoHoyos")]
+    public async Task<ActionResult<Producto>> postProductoDiegoHoyos(Producto producto)
+    {
+        _context.Producto.Add(producto);
+
+        await _context.SaveChangesAsync();
+
+        return Created($"/api/Productos/{producto.Id}", producto);
     }
 
     // DELETE: api/Producto/5
