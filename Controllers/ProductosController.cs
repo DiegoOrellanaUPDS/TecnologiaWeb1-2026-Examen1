@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Examen_1.Dominio;
 
-// AdalidCallizaya: version POST
+// AdalidCallizaya: integracion de POST y GET
 [Route("api/[controller]")]
 [ApiController]
 public class ProductosController : ControllerBase
@@ -33,6 +33,17 @@ public class ProductosController : ControllerBase
 
         return producto;
     }
+
+    // GET propio de AdalidCallizaya
+[HttpGet("getProductoAdalidCallizaya")]
+public async Task<ActionResult<IEnumerable<Producto>>> getProductoAdalidCallizaya()
+{
+    // Consultar los productos guardados en PostgreSQL
+    var productos = await _context.Producto.ToListAsync();
+
+    // Devolver los productos encontrados
+    return Ok(productos);
+}
 
     // PUT: api/Producto/5
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
