@@ -97,6 +97,7 @@ public class VentasController : ControllerBase
     }
 
 
+    // Usando amend en f1
     // POST: api/Venta/LeonardoZenteno
     [HttpPost("LeonardoZenteno")]
     public async Task<ActionResult<Venta>> PostVentaLeonardoZenteno(Venta venta)
