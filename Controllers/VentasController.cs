@@ -75,7 +75,7 @@ public class VentasController : ControllerBase
         return CreatedAtAction("GetVenta", new { id = venta.Id }, venta);
     }
 
-    // DELETE: api/Venta/5
+    // Esto es un clonflicto artifical
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteVenta(int? id)
     {
